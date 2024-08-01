@@ -1,0 +1,514 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Poppins", monospace;
+  margin: 0;
+  padding: 0;
+
+
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  --txt-color: rgba(18, 24, 38, 0.9);
+  --bg-color: rgba(255, 255, 255, 0.99);
+  --bg-faded: rgba(243, 244, 246, 0.05);
+  --bg-faded-opaque: rgba(243, 244, 246, 1);
+  --bg-super-faded: rgba(243, 244, 246, 0.35);
+  --blue: rgb(60, 129, 247);
+
+}
+
+@media (prefers-color-scheme: light) {
+  header {
+
+    *,
+    *::after,
+    *::before {
+      color: black;
+    }
+
+    .form {
+
+      *,
+      *::after,
+      *::before {
+        background: rgba(0, 0, 0, 0.06);
+
+      }
+
+      nav {
+        * {
+          background: initial
+        }
+
+        ;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --txt-color: rgba(255, 255, 255, 0.9);
+    --bg-color: rgba(18, 24, 38, 0.99);
+    --bg-faded: rgba(32, 41, 56, 0.25);
+    --bg-faded-opaque: rgba(32, 41, 56, 1);
+    --bg-super-faded: rgba(32, 41, 56, 0.35);
+  }
+
+  .section {
+    color: white !important;
+  }
+
+  input {
+    color: white !important;
+  }
+
+  .readInfo {
+    color: rgba(255, 255, 255, 0.9) !important;
+    background: rgba(32, 41, 56, 1) !important;
+  }
+
+  .readOption {
+
+    color: white !important;
+  }
+}
+
+#root {
+  opacity: 1;
+}
+
+@media (max-width:40em) {
+  main {
+    justify-content: space-evenly !important;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+  scroll-behavior: smooth;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background: var(--bg-color);
+  user-select: none;
+
+  &::selection {
+    background: transparent;
+  }
+}
+
+#root {
+  flex: 1;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100%;
+  background: url('./assets/bg.webp');
+  background-size: cover;
+  padding: 2rem;
+  position: relative;
+  z-index: 0;
+  color: white;
+
+  &::before {
+    position: absolute;
+    content: '';
+    inset: 0;
+    z-index: -1;
+    background: var(--bg-faded);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+  }
+
+  h1 {
+    opacity: 1;
+  }
+
+  p {
+    max-width: 60ch;
+    text-align: center;
+  }
+
+  .form {
+    margin-top: 2rem;
+    background: var(--bg-super-faded);
+    backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    padding: 1rem;
+    padding-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-radius: 4px;
+    align-items: center;
+    padding-bottom: 1rem;
+
+    .inputWrapperDiv {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      label,
+      .label {
+        color: var(--txt-color);
+        font-size: 1rem !important;
+        font-weight: 500;
+      }
+
+
+
+      input {
+        padding: 0.25rem 0.5rem;
+        font-size: 14px;
+        border-radius: 4px;
+        border: none;
+        border: 2px solid transparent;
+        min-width: 30ch;
+        background: var(--bg-faded-opaque);
+        color: black;
+
+        &:focus {
+          outline: none;
+          border: 2px solid none;
+        }
+
+        &::placeholder {
+          color: rgb(169, 169, 169);
+          left: 0;
+        }
+
+      }
+
+      nav {
+        padding: 0.25rem 0.5rem;
+        font-size: 14px;
+        border-radius: 4px;
+        border: none;
+        border: 2px solid transparent;
+        display: flex;
+        min-width: 20ch;
+
+
+
+        span {
+          color: rgb(169, 169, 169);
+
+          &::selection {
+            background: none;
+          }
+
+        }
+
+        position: relative;
+        background: var(--bg-faded-opaque);
+
+        .options {
+          position: absolute;
+          bottom: -6.125rem;
+          right: -2px;
+          width: 100%;
+          list-style: none;
+          display: none;
+          flex-wrap: wrap;
+          background: var(--bg-faded-opaque);
+          flex-direction: column;
+          border: 1px solid var(--bg-color);
+          border-radius: 4px;
+
+          li {
+            flex: 1;
+            border: 0px solid transparent;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.358);
+            border-radius: 4px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            &:last-child {
+              border-bottom: none;
+              border-radius: 4px;
+            }
+
+            .readOption {
+              display: flex;
+              width: 100%;
+              padding: 0.125rem 0.25rem;
+              background: transparent;
+              font-size: 14px;
+              border: none;
+              border: 2px solid transparent;
+              justify-content: start;
+              align-items: center;
+              padding-inline: 1rem;
+              color: black;
+            }
+
+            &:hover {
+              background: var(--bg-color);
+
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+
+#addBook {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  background: var(--bg-color);
+  color: var(--txt-color);
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  transition: all 250ms;
+
+  &:hover {
+    box-shadow: none;
+
+  }
+}
+
+
+
+.section {
+  display: flex;
+  padding: 1rem;
+  margin: 2rem;
+  font-size: 1.25rem;
+  border-radius: 8px;
+  background: rgba(128, 128, 128, 0.1);
+  color: black;
+}
+
+main {
+  padding: 2rem;
+  color: var(--txt-color);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+
+  .BOOK {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: max-content;
+
+    .bookCardWrapper {
+      position: relative;
+      z-index: 0;
+
+      /* .art {
+        position: absolute;
+        inset: 0;
+        border-radius: 4px;
+        background: url(./assets/art.png)no-repeat center center;
+        background-repeat: repeat;
+        background-size: contain;
+        z-index: -1;
+        opacity: 0.3;
+        filter: brightness(2);
+      } */
+
+      /* .cover {
+        position: absolute;
+        inset: 0;
+        background: url(./assets/book.png);
+        filter: invert(1);
+        opacity: 0.2;
+        z-index: -1;
+        border-radius: 4px;
+      } */
+
+      width: 180px;
+      height: 260px;
+      padding: 0.75rem;
+      transition: all 250ms;
+      border-radius: 4px;
+
+      border: none;
+
+
+
+      .bookCard {
+        border: 1px solid rgba(255, 255, 255, 0.302);
+
+        display: flex;
+        height: 100%;
+        width: 100%;
+        padding-block: 1.5rem;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+
+
+        .titleInfo {
+
+          padding: 4px;
+          font-size: 20px;
+          text-align: center;
+          font-weight: bold;
+          color: rgba(255, 255, 255, 0.84);
+          user-select: none;
+          word-break: break-word;
+          overflow-wrap: break-word;
+          text-transform: capitalize;
+
+          &::selection {
+            background: transparent;
+          }
+        }
+
+        .otherInfo {
+
+          padding: 4px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+
+          .authorInfo {
+            font-size: 14px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.55);
+            font-weight: 600;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            user-select: none;
+            text-transform: capitalize;
+
+            &::selection {
+              background: transparent;
+            }
+          }
+
+          .genreInfo {
+            margin-top: 4px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.65);
+            background: rgba(0, 0, 0, 0.25);
+            padding: 2px 10px;
+            border-radius: 100dvw;
+            user-select: none;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            text-transform: capitalize;
+
+            &::selection {
+              background: transparent;
+            }
+          }
+        }
+      }
+    }
+
+    .BOOKOPTIONS {
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+
+      gap: 1rem;
+
+      .readInfo {
+        font-size: 12px;
+        color: gray;
+        background: gainsboro;
+        padding: 2px 6px;
+        border-radius: 100dvw;
+        user-select: none;
+
+        &::selection {
+          background: transparent;
+        }
+      }
+
+      svg {
+        fill: black;
+        background: gainsboro;
+        padding: 3px;
+        border-radius: 50%;
+        transition: all 250ms;
+
+        &:hover {
+          fill: rgba(255, 255, 255, 0.75);
+          background: red;
+        }
+      }
+    }
+
+  }
+
+
+}
+
+.BOOK:hover .bookCardWrapper {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  transform: scale(1.025);
+  cursor: default
+}
+
+#bookStatus {
+  color: rgb(169, 169, 169);
+
+}
+
+.finishedReading {
+  font-size: 12px;
+  background: rgb(0, 255, 30, 0.6) !important;
+  color: rgb(3, 65, 0) !important;
+}
+
+.wantToRead {
+  font-size: 12px;
+  background: rgba(255, 0, 174, 0.6) !important;
+  color: rgb(65, 0, 51) !important;
+}
+
+.currentlyReading {
+  font-size: 12px;
+  background: rgba(255, 238, 0, 0.6) !important;
+  color: rgb(65, 64, 0) !important;
+}
+
+@media (prefers-color-scheme:dark) {
+  .finishedReading {
+    font-size: 12px;
+    color: rgb(0, 255, 30) !important;
+    background: rgb(3, 65, 0) !important;
+  }
+
+  .wantToRead {
+    font-size: 12px;
+    color: rgba(255, 0, 174, 1) !important;
+    background: rgb(89, 5, 71) !important;
+  }
+
+  .currentlyReading {
+    font-size: 12px;
+    color: rgba(255, 238, 0, 1) !important;
+    background: rgb(65, 64, 0) !important;
+  }
+}

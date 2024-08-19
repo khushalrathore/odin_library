@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description"
+      content="BookLog: Effortlessly manage your book collection. Add, remove, and track books by author, title, genre, and reading status. Simplify your reading journey with our easy-to-use book management app.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>BookLog</title>
+    <link rel="icon" href="./assets/favicon.png">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer type="module"></script>
+  </head>
+
+  <body>
+    <div id="root">
+      <header style="position: relative;">
+        <div class="headerImg"></div>
+        <span id="themer"></span>
+        <h1><a href="#">BookLog</a></h1>
+        <p>Manage your book collection effortlessly. Add, remove, and track books by author, title, genre, and reading
+          status. Simplify your reading journey with BookLog.</p>
+        <div style="display: flex;flex-direction: column;align-items: center;gap: 1rem;">
+          <div class="form">
+            <div class="inputWrapperDiv">
+              <input required spellcheck="true" autocapitalize="words" autocomplete="on" type="text" name="name"
+                id="bookTitle" placeholder="Title&#42; : ">
+            </div>
+            <div class="inputWrapperDiv">
+              <input required spellcheck="true" autocapitalize="words" autocomplete="on" type="text" name="author"
+                id="bookAuthor" placeholder="Author&#42; : ">
+            </div>
+            <div class="inputWrapperDiv">
+              <input required spellcheck="true" autocapitalize="words" autocomplete="on" type="text" name="genre"
+                id="bookGenre" placeholder="Genre&#42; : ">
+            </div>
+            <div class="inputWrapperDiv">
+              <span class="label" style="display: none;">Reading Status:</span>
+              <nav>
+                <div style="display: flex;justify-content: space-between;align-items: center;width: 100%;">
+                  <span id="bookStatus">Currently Reading</span>
+                  <img alt="Pick An Option" class="dropIcon" src="./assets/down.png" width="20px" height="20px"
+                    style="filter: contrast(0.3);" />
+                </div>
+                <ul class="options">
+                  <li>
+                    <button class="readOption" id="readOption3">Currently Reading</button>
+                  </li>
+                  <li>
+                    <button class="readOption" id="readOption2">Want to Read</button>
+                  </li>
+                  <li>
+                    <button class="readOption" id="readOption1">Finished Reading</button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <button id="addBook">Add Book</button>
+        </div>
+
+      </header>
+
+
+      <main>
+        <template id="bookTemplate">
+          <div class="BOOK">
+            <div class="bookCardWrapper">
+              <div class="art"></div>
+              <div class="bookCard">
+                <span class="titleInfo"></span>
+                <span class="otherInfo">
+                  <span class="authorInfo"></span>
+                  <span class="genreInfo"></span>
+                </span>
+              </div>
+            </div>
+            <div class="BOOKOPTIONS">
+              <span class="readInfo">Currently Reading</span>
+              <svg class="del" xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px"
+                fill="#e8eaed">
+                <path
+                  d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+              </svg>
+            </div>
+          </div>
+        </template>
+      </main>
+    </div>
+  </body>
+
+</html>
